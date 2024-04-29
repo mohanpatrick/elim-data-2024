@@ -19,7 +19,7 @@ options(dplyr.summarise.inform = FALSE,
 #Sys.setenv(MFL_CLIENT = "")
 #Sys.setenv(GITHUB_PAT="")
 
-GITHUB_PAT <- Sys.getenv(c("GITHUB_PAT"))
+#GITHUB_PAT <- Sys.getenv(c("GITHUB_PAT"))
 mfl_client <- Sys.getenv(c("MFL_CLIENT"))
 mfl_user_id <- Sys.getenv(c("MFL_USER_ID"))
 mfl_pass <- Sys.getenv(c("MFL_PWD"))
@@ -84,8 +84,8 @@ cli::cli_alert("Running with {run_league_count} leagues")
 
 
 # For testing subset leagues
-#mfl_leagues <- mfl_leagues |>
-#  slice_head(n=25)
+mfl_leagues <- mfl_leagues |>
+  slice_head(n=25)
 
 
 
