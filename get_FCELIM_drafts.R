@@ -17,8 +17,10 @@ options(dplyr.summarise.inform = FALSE,
 #### DELETE AFTER TESTING ########
 #GITHUB_PAT <- Sys.setenv("GITHUB_PAT")
 #Sys.setenv(MFL_CLIENT = "")
-#Sys.setenv(GITHUB_PAT="")
-
+Sys.setenv(GITHUB_PAT="")
+Sys.setenv(MFL_CLIENT ="")
+Sys.setenv(MFL_USER_ID = "")
+Sys.setenv(MFL_PWD = "")
 #GITHUB_PAT <- Sys.getenv(c("GITHUB_PAT"))
 mfl_client <- Sys.getenv(c("MFL_CLIENT"))
 mfl_user_id <- Sys.getenv(c("MFL_USER_ID"))
@@ -28,8 +30,6 @@ cli::cli_alert("Client ID: {mfl_client}")
 search_draft_year = "2024"
 find_leagues = "TRUE"
 polite = "FALSE"
-mfl_user_id = "android16"
-mfl_pass = "R1BRX70x"
 search_string="zzz #FCEliminator"
 total_picks_in_draft = 288
 # Exclude blind bid leagues
