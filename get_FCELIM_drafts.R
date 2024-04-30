@@ -17,10 +17,7 @@ options(dplyr.summarise.inform = FALSE,
 #### DELETE AFTER TESTING ########
 #GITHUB_PAT <- Sys.setenv("GITHUB_PAT")
 #Sys.setenv(MFL_CLIENT = "")
-Sys.setenv(GITHUB_PAT="")
-Sys.setenv(MFL_CLIENT ="")
-Sys.setenv(MFL_USER_ID = "")
-Sys.setenv(MFL_PWD = "")
+
 #GITHUB_PAT <- Sys.getenv(c("GITHUB_PAT"))
 mfl_client <- Sys.getenv(c("MFL_CLIENT"))
 mfl_user_id <- Sys.getenv(c("MFL_USER_ID"))
@@ -131,12 +128,12 @@ writeLines(update_time, "timestamp.txt")
 pb_upload("draft_picks_mfl.csv",
           repo = "mohanpatrick/elim-data-2024",
           tag = "data-mfl")
-cli::cli_alert_success("Successfully uploaded to Git")
+cli::cli_alert_success("Successfully draft picks uploaded to Git")
 
 
 pb_upload("mfl_league_ids.csv",
           repo = "mohanpatrick/elim-data-2024",
           tag = "data-mfl")
-cli::cli_alert_success("Successfully uploaded to Git")
-
+cli::cli_alert_success("Successfully uploaded league ids to Git")
+cli::cli_alert_success("Moving on to ADP")
 
