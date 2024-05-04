@@ -124,7 +124,9 @@ mfl_drafts <- mfl_drafts |>
     time_to_pick = seconds(time_to_pick_int)
   )
 
-made_pick_count = mfl_drafts |> filter (!is.na(timestamp()))
+made_pick_count = mfl_drafts |>
+  filter (!is.na(timestamp()))|>
+  nrow()
 
 }
 
@@ -161,7 +163,7 @@ cli::cli_alert_success("Moving on to ADP")
 
 # For ADP...we have drafts, so really just need to nrow() and exit if none, then polite mode
 # ADD filter for not NA timestamps as a condition
-if (made_pick_count > 0 ){
+if (exists(made_pick_count)  ){
   cli::cli_alert_success("{made_pick_count} picks found calculating ADP")
 
   # Then we we have some draft picks, but perhaps not many. ADP app will filter lt 5 currently
