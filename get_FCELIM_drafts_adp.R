@@ -20,7 +20,6 @@ options(dplyr.summarise.inform = FALSE,
 
 
 
-
 #GITHUB_PAT <- Sys.getenv(c("GITHUB_PAT"))
 mfl_client <- Sys.getenv(c("MFL_CLIENT"))
 mfl_user_id <- Sys.getenv(c("MFL_USER_ID"))
@@ -85,8 +84,8 @@ cli::cli_alert("Running with {run_league_count} leagues")
 
 
 # For testing subset leagues
-#mfl_leagues <- mfl_leagues |>
-#  slice_head(n=50)
+mfl_leagues <- mfl_leagues |>
+  slice_head(n=6)
 
 
 
@@ -124,7 +123,7 @@ mfl_drafts <- mfl_drafts |>
     time_to_pick = seconds(time_to_pick_int)
   )
 
-made_pick_count = mfl_drafts |>
+made_pick_count <- mfl_drafts |>
   filter (!is.na(timestamp()))|>
   nrow()
 
@@ -163,7 +162,7 @@ cli::cli_alert_success("Moving on to ADP")
 
 # For ADP...we have drafts, so really just need to nrow() and exit if none, then polite mode
 # ADD filter for not NA timestamps as a condition
-if (exists(made_pick_count)  ){
+if (exists("made_pick_count")  ){
   cli::cli_alert_success("{made_pick_count} picks found calculating ADP")
 
   # Then we we have some draft picks, but perhaps not many. ADP app will filter lt 5 currently
