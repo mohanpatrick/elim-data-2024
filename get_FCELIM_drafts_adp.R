@@ -241,9 +241,10 @@ write_csv(all_picks, "all_picks.csv")
     ungroup() |>
     arrange(overall_avg,-n)
 
-  adp <- adp |>
+# Once we start having enough data, re-enable to filter out weird picks
+ # adp <- adp |>
     #  left_join(adp_last_ovr|> select(player_id, last_overall_avg)) |>
-    filter(n>4)
+  #  filter(n>4)
 
   write_csv(adp, "adp_mfl.csv")
 
