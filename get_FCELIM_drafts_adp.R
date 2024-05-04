@@ -105,7 +105,7 @@ cli::cli_alert(now())
 
 warnings <- dplyr::last_dplyr_warnings(n=20)
 
-fwrite(warnings, "warnings.txt")
+
 
 #sf_test <-get_mfl_draft(62909)
 
@@ -145,9 +145,7 @@ pb_upload("draft_picks_mfl.csv",
           tag = "data-mfl")
 cli::cli_alert_success("Successfully draft picks uploaded to Git")
 
-pb_upload("warnings.txt",
-          repo = "mohanpatrick/elim-data-2024",
-          tag = "data-mfl")
+
 
 
 
@@ -180,6 +178,7 @@ if (made_pick_count > 0 ){
   if(polite == "TRUE") {
     # Then we we need to look for completed and merge
     cli::cli_alert_success("And we are in polite mode so merging with completed")
+    pick_cols = names(mfl_drafts)
     completed_draft_picks <- read_csv("https://github.com/mohanpatrick/elim-data-2024/releases/download/data-mfl/completed_mfl_drafts.csv", col_names = pick_cols)|>
       filter(!(league_id %in% leagues_to_exclude))
 
