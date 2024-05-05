@@ -84,8 +84,8 @@ cli::cli_alert("Running with {run_league_count} leagues")
 
 
 # For testing subset leagues
-mfl_leagues <- mfl_leagues |>
-  slice_head(n=6)
+#mfl_leagues <- mfl_leagues |>
+ # slice_head(n=6)
 
 
 
