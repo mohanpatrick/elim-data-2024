@@ -104,6 +104,11 @@ cli::cli_alert(now())
 warnings <- dplyr::last_dplyr_warnings(n=20)
 
 
+if (nrow(mfl_drafts) <1) {
+  cli::cli_alert("MFL DRAFT FILE empty. Aborting")
+  stop()
+
+}
 
 #sf_test <-get_mfl_draft(67246)
 
