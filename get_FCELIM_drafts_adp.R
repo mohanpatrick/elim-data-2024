@@ -19,7 +19,6 @@ options(dplyr.summarise.inform = FALSE,
 #Sys.setenv(MFL_CLIENT = "")
 
 
-
 #GITHUB_PAT <- Sys.getenv(c("GITHUB_PAT"))
 mfl_client <- Sys.getenv(c("MFL_CLIENT"))
 mfl_user_id <- Sys.getenv(c("MFL_USER_ID"))
@@ -106,7 +105,7 @@ warnings <- dplyr::last_dplyr_warnings(n=20)
 
 
 
-#sf_test <-get_mfl_draft(62909)
+#sf_test <-get_mfl_draft(67246)
 
 # Add interval between picks, note this dies without picks so adding the if
 # ADD filter for not NA timestamps as a condition
