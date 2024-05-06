@@ -110,7 +110,7 @@ warnings <- dplyr::last_dplyr_warnings(n=20)
 # Add interval between picks, note this dies without picks so adding the if
 # ADD filter for not NA timestamps as a condition
 # Ts doesn't work with no data
-if( "timestamp" %in% names(mfl_drafts)) {
+
 mfl_drafts <- mfl_drafts |>
   mutate(
     player_id = as.character(player_id)
@@ -122,11 +122,12 @@ mfl_drafts <- mfl_drafts |>
     time_to_pick = seconds(time_to_pick_int)
   )
 
-made_pick_count <- mfl_drafts |>
-  filter (!is.na(timestamp()))|>
-  nrow()
+made_picks <- mfl_drafts |>
+  filter (!is.na(player_name))
 
-}
+made_pick_count <- nrow(made_picks)
+
+
 
 
 
@@ -161,7 +162,7 @@ cli::cli_alert_success("Moving on to ADP")
 
 # For ADP...we have drafts, so really just need to nrow() and exit if none, then polite mode
 # ADD filter for not NA timestamps as a condition
-if (exists("made_pick_count")  ){
+
   cli::cli_alert_success("{made_pick_count} picks found calculating ADP")
 
   # Then we we have some draft picks, but perhaps not many. ADP app will filter lt 5 currently
@@ -270,6 +271,6 @@ write_csv(all_picks, "all_picks.csv")
   cli::cli_alert_success("Successfully uploaded adp metadata to Git")
 
 
-}
+
 
 
