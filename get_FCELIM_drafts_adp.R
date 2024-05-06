@@ -36,6 +36,18 @@ leagues_to_exclude_adp = c(15099,28530,29122,29276,37484,45539,50996,69507,70181
 # Hmmm, can we use the number of picks to filter out weird ones? Before we filter?
 
 
+pb_download("draft_picks_mfl.csv",
+          repo = "mohanpatrick/elim-data-2024",
+          tag = "data-mfl")
+cli::cli_alert_success("Successfully draft picks uploaded to Git")
+
+pb_upload("draft_picks_mfl.csv",
+            repo = "mohanpatrick/elim-data-2024",
+            tag = "data-archive")
+cli::cli_alert_success("Successfully uploaded last run to archive")
+
+
+
 
 
 
@@ -106,6 +118,11 @@ warnings <- dplyr::last_dplyr_warnings(n=20)
 
 if (nrow(mfl_drafts) <1) {
   cli::cli_alert("MFL DRAFT FILE empty. Aborting")
+
+  write_csv(mfl_drafts,"draft_picks_mfl_bad_file.csv")
+  pb_upload("draft_picks_mfl_bad_file.csv",
+            repo = "mohanpatrick/elim-data-2024",
+            tag = "data-mfl")
   stop()
 
 }
