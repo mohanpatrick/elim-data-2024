@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
   schedule:
-     - cron: "15 18,23 * * *"
+     - cron: "15 23 * * *"
   
   
 name: get_elim_drafts
