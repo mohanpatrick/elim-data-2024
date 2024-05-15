@@ -22,5 +22,5 @@ jobs:
           packages: ffscrapr, data.table, nflverse, stringr, lubridate, piggyback, readr, dplyr, tidyr, tidyverse, purrr, cli
         name: Run data update
       - run: |
-          source("get_FCELIM_drafts_adp.R")
+          source("get_FCELIM_drafts_adp_v2.R")
         shell: Rscript {0}
