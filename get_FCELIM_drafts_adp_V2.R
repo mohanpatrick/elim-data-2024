@@ -37,15 +37,15 @@ leagues_to_exclude_adp = c(15099,28530,29122,29276,37484,45539,50996,69507,70181
 # Hmmm, can we use the number of picks to filter out weird ones? Before we filter?
 
 
-pb_download("draft_picks_mfl.csv",
-          repo = "mohanpatrick/elim-data-2024",
-          tag = "data-mfl")
-cli::cli_alert_success("Successfully draft picks uploaded to Git")
+#pb_download("draft_picks_mfl.csv",
+#          repo = "mohanpatrick/elim-data-2024",
+#          tag = "data-mfl")
+#cli::cli_alert_success("Successfully draft picks uploaded to Git")
 
-pb_upload("draft_picks_mfl.csv",
-            repo = "mohanpatrick/elim-data-2024",
-            tag = "data-archive")
-cli::cli_alert_success("Successfully uploaded last run to archive")
+#pb_upload("draft_picks_mfl.csv",
+#            repo = "mohanpatrick/elim-data-2024",
+#            tag = "data-archive")
+#cli::cli_alert_success("Successfully uploaded last run to archive")
 
 
 
@@ -59,12 +59,16 @@ get_mfl_draft <- function(league_id){
   conn <- mfl_connect(search_draft_year, league_id, user_agent = "MFLRCLIENT", rate_limit = TRUE, rate_limit_number = 30, rate_limit_seconds = 60,user_name=mfl_user_id, password = mfl_pass)
   draft<- ff_draft(conn)
   if("timestamp" %in% names(draft)){
+
+    records = nrow(draft)
+    cols=names(draft)
     return(draft)
+    cli::cli_alert_success("{league_id} has {records} and {names}")
 
   } else {
 
     cli::cli_alert_success("{league_id} returns nothing")
-    return(NULL)
+    #return(NULL)
   }
 }
 
