@@ -23,7 +23,7 @@ prior_completed_drafts <- read_csv("https://github.com/mohanpatrick/elim-data-20
 
 current_drafts  <- read_csv("https://github.com/mohanpatrick/elim-data-2024/releases/download/data-mfl/draft_picks_mfl.csv")
 
-newly_completed_leagues <- drafts |>
+newly_completed_leagues <- current_drafts  |>
   filter(!is.na(player_name)) |>
   group_by(league_id, league_name)|>
   summarise(farthest_pick = max(overall))|>
@@ -39,14 +39,20 @@ count_prior_leagues <- nrow(prior_completed_leagues)
 
 if (count_new_leagues == count_prior_leagues) {
 
-  cli::cli_alert_success("Nothing to do here. No net new leagues")
+  cli::cli_alert_success("Nothing to do here. No net new leagues to add to existing {count_prior_leagues} ")
 
 }else {
+
+  cli::cli_alert_success("{count_new_eliminated} leagues found. Merging")
+
+
 
 all_completed_leagues <- union(newly_completed_leagues, prior_completed_leagues)
 all_completed_drafts <- union(newly_completed_drafts, prior_completed_drafts)
 
+total_leagues <- nrow(newly_completed_leagues)
 
+cli::cli_alert_success("{total_leagues} completed leagues now")
 
 
 # This is a throwaway line until we've done a run
