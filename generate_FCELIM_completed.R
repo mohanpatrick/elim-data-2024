@@ -13,7 +13,6 @@ library(readr)
 
 
 
-
 # Placeholder for grabbing old completed once we have established
 
 prior_completed_leagues <- read_csv("https://github.com/mohanpatrick/elim-data-2024/releases/download/data-mfl/completed_leagues.csv")
@@ -43,14 +42,14 @@ if (count_new_leagues == count_prior_leagues) {
 
 }else {
 
-  cli::cli_alert_success("{count_new_eliminated} leagues found. Merging")
+  cli::cli_alert_success("{count_new_leagues} leagues found. Merging")
 
 
 
 all_completed_leagues <- union(newly_completed_leagues, prior_completed_leagues)
 all_completed_drafts <- union(newly_completed_drafts, prior_completed_drafts)
 
-total_leagues <- nrow(newly_completed_leagues)
+total_leagues <- nrow(all_completed_leagues)
 
 cli::cli_alert_success("{total_leagues} completed leagues now")
 
