@@ -31,7 +31,7 @@ newly_completed_leagues <- current_drafts  |>
 
 
 newly_completed_drafts <- newly_completed_leagues |>
-  left_join(drafts, by=c("league_id"="league_id", "league_name" = "league_name"))
+  left_join(current_drafts, by=c("league_id"="league_id", "league_name" = "league_name"))
 
 count_new_leagues <- nrow(newly_completed_leagues)
 count_prior_leagues <- nrow(prior_completed_leagues)
